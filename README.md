@@ -8,7 +8,13 @@ Instructions to Run the Project
 
 1.  Make sure you have the latest version of [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) installed.
 2.  Clone this repository to your local machine.
+
+```git clone https://github.com/lionguru/ElevatorControlAPI.git ```
+
 3.  Navigate to the project directory in the terminal.
+
+```cd ElevatorControlAPI ```
+
 4.  Run the following command to build and run the project:
 
 ```dotnet run ```
@@ -34,7 +40,10 @@ You can use tools like [Postman](https://www.postman.com/) or [cURL](https://cur
 
 Example cURL command:
 
-```curl -X POST -H "Content-Type: application/json" -d "3" http://localhost:7074/elevator/request ```
+```curl -X POST -H "Content-Type: application/json" -d "3" https://localhost:7074/elevator/destination ```
+```curl -X GET " https://localhost:7074/elevator/passenger-floors ```
+```curl -X POST -H "Content-Type: application/json" -d "3" https://localhost:7074/elevator/request ```
+```curl -X GET https://localhost:7074/elevator/next-floor ```
 
 Further Improvements
 --------------------

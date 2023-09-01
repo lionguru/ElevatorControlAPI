@@ -6,39 +6,43 @@ namespace elevator.Controllers
     [Route("[controller]")]
     public class ElevatorController : ControllerBase
     {
-        private int elevatorCurrentFloor = 1; // Initial elevator floor
-        private List<int> passengerFloors = new List<int>(); // List of passenger-requested floors
+        private readonly ElevatorState _elevatorState;
+
+        public ElevatorController()
+        {
+            _elevatorState = ElevatorState.Instance;
+        }
 
         [HttpPost("request")]
         public IActionResult RequestElevator([FromBody] int floor)
         {
-            elevatorCurrentFloor = floor;
+            _elevatorState.ElevatorCurrentFloor = floor;
             return Ok();
         }
 
         [HttpPost("destination")]
         public IActionResult SetDestination([FromBody] int floor)
         {
-            passengerFloors.Add(floor);
+            _elevatorState.PassengerFloors.Add(floor);
             return Ok();
         }
 
         [HttpGet("passenger-floors")]
         public IActionResult GetPassengerFloors()
         {
-            return Ok(new { floors = passengerFloors });
+            return Ok(new { floors = _elevatorState.PassengerFloors });
         }
 
         [HttpGet("next-floor")]
         public IActionResult GetNextFloor()
         {
-            if (passengerFloors.Count > 0)
+            if (_elevatorState.PassengerFloors.Count > 0)
             {
-                int nextFloor = passengerFloors[0];
-                passengerFloors.RemoveAt(0);
+                int nextFloor = _elevatorState.PassengerFloors[0];
+                _elevatorState.PassengerFloors.RemoveAt(0);
                 return Ok(new { floor = nextFloor });
             }
-            return Ok(new { floor = elevatorCurrentFloor });
+            return Ok(new { floor = _elevatorState.ElevatorCurrentFloor });
         }
     }
 }
