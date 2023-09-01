@@ -41,8 +41,11 @@ You can use tools like [Postman](https://www.postman.com/) or [cURL](https://cur
 Example cURL command:
 
 ```curl -X POST -H "Content-Type: application/json" -d "3" https://localhost:7074/elevator/destination ```
+
 ```curl -X GET " https://localhost:7074/elevator/passenger-floors ```
+
 ```curl -X POST -H "Content-Type: application/json" -d "3" https://localhost:7074/elevator/request ```
+
 ```curl -X GET https://localhost:7074/elevator/next-floor ```
 
 Further Improvements
