@@ -42,7 +42,7 @@ Example cURL command:
 
 ```curl -X POST -H "Content-Type: application/json" -d "3" https://localhost:7074/elevator/destination ```
 
-```curl -X GET " https://localhost:7074/elevator/passenger-floors ```
+```curl -X GET https://localhost:7074/elevator/passenger-floors ```
 
 ```curl -X POST -H "Content-Type: application/json" -d "3" https://localhost:7074/elevator/request ```
 
